@@ -1,0 +1,2 @@
+This seems to compile the code for opencv3 Linux:
+  g++ -ggdb facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`
