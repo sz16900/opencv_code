@@ -4,7 +4,7 @@ from scipy import signal
 from scipy import misc
 from scipy.signal import argrelextrema
 
-cap = cv2.VideoCapture('cut.mp4')
+cap = cv2.VideoCapture('Bugs.mp4')
 fgbg = cv2.createBackgroundSubtractorMOG2()
 kernel = np.ones((5,5),np.float32)/25
 
@@ -24,9 +24,10 @@ while(cap.isOpened()):
     laplacian = cv2.Laplacian(fgmask,cv2.CV_64F)
     blob_img = signal.convolve2d(fgmask, scharr, boundary='symm', mode='same')
     # For now, this is like this.. gotta change it
-    inds = np.where(blob_img < 0.7)
-    blob_img[inds] = np.nan
-    imax = argrelextrema(blob_img, np.greater)
+    # inds = np.where(blob_img < 0.7)
+    # blob_img[inds] = np.nan
+    # imax = argrelextrema(blob_img, np.greater)
+    # X, Y = np.unravel_index(blob_img, imax)
     # sobelx = cv2.Sobel(fgmask,cv2.CV_64F,1,0,ksize=5)
     # sobely = cv2.Sobel(fgmask,cv2.CV_64F,0,1,ksize=5)
 
@@ -34,7 +35,7 @@ while(cap.isOpened()):
     cv2.imshow('fg', fgmask)
     cv2.imshow('gaussian', gaussian)
     cv2.imshow('laplacian', laplacian)
-    cv2.imshow('blob', np.absolute(blob_img))
+    # cv2.imshow('blob', np.absolute(blob_img))
     # cv2.imshow('x', sobelx)
     # cv2.imshow('y', sobely)
 
