@@ -5,7 +5,7 @@ os.mkdir(folder)
 # use opencv to do the job
 import cv2
 print(cv2.__version__)  # my version is 3.1.0
-vidcap = cv2.VideoCapture('cut.mp4')
+vidcap = cv2.VideoCapture('Bugs.mp4')
 count = 0
 while True:
     success,image = vidcap.read()
